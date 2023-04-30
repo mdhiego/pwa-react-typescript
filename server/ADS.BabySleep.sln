@@ -8,6 +8,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADS.BabySleep", "src\ADS.BabySleep\ADS.BabySleep.csproj", "{3A2D1D03-7952-40DE-83D0-21E9502B3060}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8BAEA508-FC10-4589-A341-64A654BD61E8}"
+	ProjectSection(SolutionItems) = preProject
+		docs\arch.dio = docs\arch.dio
+		docs\spec.yml = docs\spec.yml
+		docs\request.http = docs\request.http
+		docs\Persona e Jornada do Usuário_Higor_Crisostomo.pdf = docs\Persona e Jornada do Usuário_Higor_Crisostomo.pdf
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DC6D1329-880C-492D-A1C2-7082CBFA62F2}"
 EndProject
