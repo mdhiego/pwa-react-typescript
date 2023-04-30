@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
-const About = lazy(() => import('./About'));
-const Home =  lazy(() => import('./Home') );
+const About = lazy(() => import('./pages/About'));
+const Home =  lazy(() => import('./pages/Home') );
 
 const App: React.FC = () => (
   <Router>
