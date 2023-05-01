@@ -5,17 +5,25 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{23F04F7B-E357-41A0-9254-F11E52A105C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADS.BabySleepSounds", "src\ADS.BabySleepSounds\ADS.BabySleepSounds.csproj", "{3A2D1D03-7952-40DE-83D0-21E9502B3060}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADS.BabySleepSounds.Server", "src\ADS.BabySleepSounds.Server\ADS.BabySleepSounds.Server.csproj", "{3A2D1D03-7952-40DE-83D0-21E9502B3060}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8BAEA508-FC10-4589-A341-64A654BD61E8}"
 	ProjectSection(SolutionItems) = preProject
 		docs\arch.dio = docs\arch.dio
 		docs\spec.yml = docs\spec.yml
 		docs\request.http = docs\request.http
-		docs\Persona e Jornada do Usuário_Higor_Crisostomo.pdf = docs\Persona e Jornada do Usuário_Higor_Crisostomo.pdf
+		docs\User Persona and Journey.pdf = docs\User Persona and Journey.pdf
+		docs\http-client.env.json = docs\http-client.env.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DC6D1329-880C-492D-A1C2-7082CBFA62F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiki", "wiki", "{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863}"
+	ProjectSection(SolutionItems) = preProject
+		docs\wiki\dotnet-tools.md = docs\wiki\dotnet-tools.md
+		docs\wiki\repr-pattern.md = docs\wiki\repr-pattern.md
+		docs\wiki\vertical-slices.md = docs\wiki\vertical-slices.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,5 +41,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3A2D1D03-7952-40DE-83D0-21E9502B3060} = {23F04F7B-E357-41A0-9254-F11E52A105C4}
+		{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863} = {8BAEA508-FC10-4589-A341-64A654BD61E8}
 	EndGlobalSection
 EndGlobal
