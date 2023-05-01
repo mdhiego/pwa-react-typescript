@@ -27,7 +27,6 @@
     <Folder Include="Contracts\Requests\" />
     <Folder Include="Contracts\Responses\" />
     <Folder Include="Contracts\Shared\Enums\" />
-    <Folder Include="Features\Auth\Logout\" />
   </ItemGroup>
 
 </Project>

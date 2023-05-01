@@ -1,7 +1,7 @@
 using ADS.BabySleepSounds.Server;
-using ADS.BabySleepSounds.Server.Configuration;
 using ADS.BabySleepSounds.Server.Features.Auth;
-using ADS.BabySleepSounds.Server.Features.User;
+using ADS.BabySleepSounds.Server.Features.Songs;
+using ADS.BabySleepSounds.Server.Features.Users;
 using ADS.BabySleepSounds.Server.Helpers;
 
 
@@ -42,7 +42,8 @@ var app = builder.Build();
 
     app
         .MapAuthEndpoints()
-        .MapUserEndpoints();
+        .MapUsersEndpoints()
+        .MapSongsEndpoints();
 }
 
 app.Run();

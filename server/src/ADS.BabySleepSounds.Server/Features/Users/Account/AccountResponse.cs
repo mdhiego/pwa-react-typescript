@@ -1,7 +1,6 @@
-﻿namespace ADS.BabySleepSounds.Server.Features.User.Accounts;
+﻿namespace ADS.BabySleepSounds.Server.Features.Users.Account;
 
 public sealed record AccountResponse
 {
-
     public DateTime UpdateTime { get; init; }
 }

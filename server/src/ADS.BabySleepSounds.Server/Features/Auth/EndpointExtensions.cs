@@ -19,12 +19,7 @@ public static class EndpointExtensions
                 .Accepts<RegisterRequest>("application/json")
                 .Produces<RegisterResponse>(StatusCodes.Status200OK)
                 .ProducesValidationProblem()
-                .AddEndpointFilter<ValidationFilter<RegisterRequest>>()
-                .WithOpenApi(operation =>
-                {
-                    operation.Summary = "Register endpoint";
-                    return operation;
-                });
+                .AddEndpointFilter<ValidationFilter<RegisterRequest>>();
 
             auth
                 .MapPost("login", LoginEndpoint.Login)
@@ -32,12 +27,7 @@ public static class EndpointExtensions
                 .Accepts<LoginRequest>("application/json")
                 .Produces<LoginResponse>(StatusCodes.Status200OK)
                 .ProducesValidationProblem()
-                .AddEndpointFilter<ValidationFilter<LoginRequest>>()
-                .WithOpenApi(operation =>
-                {
-                    operation.Summary = "Login endpoint";
-                    return operation;
-                });
+                .AddEndpointFilter<ValidationFilter<LoginRequest>>();
         }
 
         return app;
