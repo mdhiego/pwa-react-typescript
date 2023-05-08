@@ -9,6 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser"/>
+    <PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
   </ItemGroup>
 </Project>

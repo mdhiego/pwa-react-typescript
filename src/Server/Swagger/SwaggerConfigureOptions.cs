@@ -1,3 +1,4 @@
+using BabySounds.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
@@ -26,8 +27,10 @@ public sealed class SwaggerConfigureOptions : IConfigureOptions<SwaggerGenOption
                 Email = "contact@babysleep.com",
             }
         };
-
         options.SwaggerDoc("v1", info);
+
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, $"{typeof(IAssemblyMarker).Assembly.GetName().Name}.xml");
+        options.IncludeXmlComments(xmlPath);
 
         var securityScheme = new OpenApiSecurityScheme
         {

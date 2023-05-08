@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Client.MediaApi\BabySounds.Client.MediaApi.csproj" />
     <ProjectReference Include="..\Contracts\BabySounds.Contracts.csproj" />
   </ItemGroup>

@@ -1,6 +1,9 @@
 using BabySounds.Server;
 using BabySounds.Server.Features.Auth;
+using BabySounds.Server.Features.Categories;
+using BabySounds.Server.Features.Player;
 using BabySounds.Server.Features.Playlists;
+using BabySounds.Server.Features.Search;
 using BabySounds.Server.Features.Tracks;
 using BabySounds.Server.Features.Users;
 using BabySounds.Server.Helpers;
@@ -58,7 +61,10 @@ var app = builder.Build();
         .MapAuthEndpoints()
         .MapUsersEndpoints()
         .MapTracksEndpoints()
+        .MapSearchEndpoints()
+        .MapCategoriesEndpoints()
         .MapPlaylistsEndpoints()
+        .MapPlayerEndpoints()
         .MapHealthChecks("/health");
 }
 
