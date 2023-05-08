@@ -2,11 +2,11 @@
 using System.Text;
 using System.Text.Json;
 using BabySounds.Server.Brokers.Emailing;
-using BabySounds.Server.Brokers.JwtGeneration;
 using BabySounds.Server.Brokers.Persistence;
 using BabySounds.Server.Brokers.SystemClock;
 using BabySounds.Server.Configuration;
 using BabySounds.Server.Helpers;
+using BabySounds.Server.Services.JwtGeneration;
 using BabySounds.Server.Swagger;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,31 +52,34 @@ internal static class ProgramExtensions
         return services;
     }
 
-    internal static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    internal static IServiceCollection AddBrokers(this IServiceCollection services, IHostEnvironment environment)
     {
-        services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
+        services.AddSingleton<ISystemClock, SystemClock>();
+
+        services
+            .AddScoped<ApplicationDbContext>()
+            .AddDbContext<ApplicationDbContext>()
+            .AddHostedService<ApplicationDbSetup>();
+
+        if (environment.IsDevelopment()) services.AddScoped<IEmailSender, FakeEmailSender>();
+        else services.AddScoped<IEmailSender, SmtpEmailSender>();
 
         return services;
     }
 
-    internal static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IHostEnvironment environment)
+    internal static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddSingleton<ISystemClock, SystemClock>();
+        services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
 
-        services.AddScoped<ApplicationDbContext>();
-        services.AddDbContext<ApplicationDbContext>();
-        // Register the worker responsible of seeding the database with the sample clients.
-        services.AddHostedService<ApplicationDbSetup>();
-
-        var serviceProvider = services.BuildServiceProvider();
-        using var scope = serviceProvider.CreateScope();
-        var jwtOptions = scope.ServiceProvider.GetRequiredService<IOptions<JwtBearerSettings>>();
-
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
         services
+            .AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>()
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
+                using var serviceProvider = services.BuildServiceProvider();
+                using var scope = serviceProvider.CreateScope();
+                var jwtOptions = scope.ServiceProvider.GetRequiredService<IOptions<JwtBearerSettings>>();
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
@@ -87,40 +90,27 @@ internal static class ProgramExtensions
                     ValidAudience = jwtOptions.Value.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.Value.SecretKey))
                 };
-            });
-        services.AddAuthorization();
-
-        if (environment.IsDevelopment()) services.AddScoped<IEmailSender, FakeEmailSender>();
-        else services.AddScoped<IEmailSender, SmtpEmailSender>();
-
-        return services;
-    }
-
-    internal static IServiceCollection AddWebApiServices(this IServiceCollection services)
-    {
-        var serviceProvider = services.BuildServiceProvider();
-        using var scope = serviceProvider.CreateScope();
-        var corsOptions = scope.ServiceProvider.GetRequiredService<IOptions<CorsSettings>>();
+            }).Services
+            .AddAuthorization();
 
         services
             .AddHttpContextAccessor()
             .AddCors(options =>
             {
-                options.AddPolicy(Constants.CorsPolicy, builder =>
-                {
-                    builder
-                        .WithOrigins(corsOptions.Value.AllowedOrigins.Split(";"))
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
+                using var serviceProvider = services.BuildServiceProvider();
+                using var scope = serviceProvider.CreateScope();
+                var corsOptions = scope.ServiceProvider.GetRequiredService<IOptions<CorsSettings>>();
+
+                options.AddPolicy(Constants.CorsPolicy, builder => builder
+                    .WithOrigins(corsOptions.Value.AllowedOrigins.Split(";"))
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                );
             })
             .AddLocalization()
             .AddHealthChecks().Services
             .AddProblemDetails()
-            .AddRouting(static options =>
-            {
-                options.LowercaseUrls = true;
-            })
+            .AddRouting(static options => options.LowercaseUrls = true)
             .AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigureOptions>()
             .AddEndpointsApiExplorer()
             .AddSwaggerGen();

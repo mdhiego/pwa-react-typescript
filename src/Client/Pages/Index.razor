@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Components.QuickGrid
 @using NeoSmart.PrettySize
 @inject MediaFiles MediaFiles
 
@@ -36,7 +37,7 @@
             <PropertyColumn Property="@(file => file.Name)" Sortable="true">
                 <ColumnOptions>
                     <div class="search-box">
-                        <input type="search" @bind="_searchName" @bind:event="oninput"
+                        <input type="search" @bind="                            _searchName" @bind:event="oninput"
                                autofocus placeholder="Name..."/>
                     </div>
                 </ColumnOptions>

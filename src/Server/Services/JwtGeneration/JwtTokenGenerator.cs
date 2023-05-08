@@ -6,7 +6,7 @@ using BabySounds.Server.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BabySounds.Server.Brokers.JwtGeneration;
+namespace BabySounds.Server.Services.JwtGeneration;
 
 public sealed class JwtTokenGenerator : IJwtTokenGenerator
 {

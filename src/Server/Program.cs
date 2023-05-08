@@ -13,9 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services
         .AddOptions(builder.Configuration)
         .ConfigureOptions()
-        .AddApplicationServices()
-        .AddInfrastructureServices(builder.Environment)
-        .AddWebApiServices();
+        .AddBrokers(builder.Environment)
+        .AddServices();
 }
 
 var app = builder.Build();

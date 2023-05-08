@@ -1,5 +1,8 @@
 ﻿namespace BabySounds.Server.Brokers.Persistence;
 
+/// <summary>
+/// Worker responsible of seeding the database with the sample clients.
+/// </summary>
 public sealed class ApplicationDbSetup : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;

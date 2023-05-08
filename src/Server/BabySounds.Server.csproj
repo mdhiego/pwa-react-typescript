@@ -28,4 +28,8 @@
     <ProjectReference Include="..\Contracts\BabySounds.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
