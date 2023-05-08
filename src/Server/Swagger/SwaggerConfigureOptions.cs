@@ -1,6 +1,7 @@
 using BabySounds.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -37,7 +38,7 @@ public sealed class SwaggerConfigureOptions : IConfigureOptions<SwaggerGenOption
             Name = "Authorization",
             Type = SecuritySchemeType.Http,
             Scheme = JwtBearerDefaults.AuthenticationScheme,
-            BearerFormat = "JWT",
+            BearerFormat = JwtConstants.TokenType,
             In = ParameterLocation.Header,
             Description = "Type into the textbox: Bearer {your JWT token}."
         };

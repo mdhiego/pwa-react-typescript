@@ -55,7 +55,8 @@ var app = builder.Build();
         .UseCors(Constants.CorsPolicy)
         .UseRequestLocalization()
         .UseRouting()
-        .UseAuthentication();
+        .UseAuthentication()
+        .UseAuthorization();
 
     app
         .MapAuthEndpoints()

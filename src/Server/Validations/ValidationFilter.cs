@@ -13,23 +13,21 @@ internal sealed class ValidationFilter<T> : IEndpointFilter where T : class
 
     public async ValueTask<object?> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
     {
-        var validatable = context.Arguments.SingleOrDefault(p => p?.GetType() == typeof(T));
+        var validatable = context.Arguments.SingleOrDefault(static p => p?.GetType() == typeof(T));
         if (validatable is null) return Results.BadRequest("Invalid request.");
 
         var validationResult = await _validator.ValidateAsync((T)validatable);
-        if (!validationResult.IsValid)
-        {
-            var validationErrors = validationResult
-                .Errors
-                .GroupBy(x => x.PropertyName)
-                .ToDictionary(
-                    x => x.Key,
-                    x => Enumerable.ToArray<string>(x.Select(e => e.ErrorMessage))
-                );
+        if (validationResult.IsValid) return await next(context);
 
-            return Results.ValidationProblem(validationErrors);
-        }
+        var validationErrors = validationResult
+            .Errors
+            .GroupBy(static x => x.PropertyName)
+            .ToDictionary(
+                static x => x.Key,
+                static x => x.Select(static e => e.ErrorMessage).ToArray()
+            );
 
-        return await next(context);
+        return Results.ValidationProblem(validationErrors);
+
     }
 }

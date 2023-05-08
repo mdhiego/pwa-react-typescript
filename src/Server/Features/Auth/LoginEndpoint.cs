@@ -5,6 +5,7 @@ using BabySounds.Contracts.Responses;
 using BabySounds.Contracts.Shared.Data;
 using BabySounds.Server.Brokers.JwtGeneration;
 using BabySounds.Server.Brokers.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -43,6 +44,10 @@ internal static class LoginEndpoint
             }
         );
 
-        return Results.Ok(new LoginResponse { AccessToken = jwtToken });
+        return Results.Ok(new LoginResponse
+        {
+            TokenType = JwtBearerDefaults.AuthenticationScheme,
+            AccessToken = jwtToken
+        });
     }
 }

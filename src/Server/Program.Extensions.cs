@@ -88,6 +88,7 @@ internal static class ProgramExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.Value.SecretKey))
                 };
             });
+        services.AddAuthorization();
 
         if (environment.IsDevelopment()) services.AddScoped<IEmailSender, FakeEmailSender>();
         else services.AddScoped<IEmailSender, SmtpEmailSender>();

@@ -6,6 +6,8 @@ using BabySounds.Contracts.Responses;
 using BabySounds.Contracts.Shared.Data;
 using BabySounds.Server.Brokers.JwtGeneration;
 using BabySounds.Server.Brokers.Persistence;
+using BabySounds.Server.Domain;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
 
@@ -20,10 +22,24 @@ internal static class RegisterEndpoint
         CancellationToken cancellationToken
     )
     {
-        dbContext.Users.Add(new Domain.User
+        dbContext.Users.Add(new User
         {
             UserName = request.Username,
-            PasswordHash = request.Password
+            NormalizedUserName = request.Username.Trim().ToLowerInvariant(),
+            Email = request.Email,
+            NormalizedEmail = request.Email.Trim().ToLowerInvariant(),
+            EmailConfirmed = false,
+            TwoFactorEnabled = false,
+            Password = request.Password,
+            Playlists = new List<Playlist>
+            {
+                new Playlist
+                {
+                    Name = "Favorites",
+                    IsPublic = false,
+                    Tracks = new List<Track>()
+                }
+            }
         });
 
         await dbContext.SaveChangesAsync(cancellationToken);
@@ -38,7 +54,7 @@ internal static class RegisterEndpoint
                         LoggedUser = new LoggedUser
                         {
                             Identification = request.Username,
-                            UserName = "Dhiego Andrade",
+                            UserName = request.Username,
                             LastAccess = DateTime.UtcNow
                         }
                     },
@@ -54,6 +70,7 @@ internal static class RegisterEndpoint
 
         return Results.Ok(new RegisterResponse
         {
+            TokenType = JwtBearerDefaults.AuthenticationScheme,
             AccessToken = jwtToken
         });
     }
