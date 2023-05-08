@@ -1,5 +1,26 @@
-### Basic authorization.
-GET https://localhost:7188/auth/token
-Authorization: Basic user passwd
+### Singup.
+POST https://localhost:7188/auth/register
+Content-Type: application/json
 
-###
+{
+    "firstName": "{{first_name}}",
+    "userName": "{{username}}",
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+> {% client.global.set("auth_token", response.body.access_token); %}
+
+### Login.
+POST https://localhost:7188/auth/login
+Content-Type: application/json
+
+{
+    "userName": "{{username}}",
+    "password": "{{password}}"
+}
+> {% client.global.set("auth_token", response.body.access_token); %}
+
+### Get current user.
+GET https://localhost:7188/users/me
+Authorization: Bearer {{auth_token}}
+

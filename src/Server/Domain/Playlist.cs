@@ -4,9 +4,9 @@ public sealed record Playlist
 {
     public Guid Id { get; init; }
 
-    public string Name { get; init; }
-    public string ImageUrl { get; init; }
-    public bool IsPublic { get; set; }
+    public string Name { get; set; }
+    public string? ImageUrl { get; set; }
+    public bool IsPublic { get; set; } = true;
 
-    public IEnumerable<Track> Tracks { get; init; }
+    public IEnumerable<Track> Tracks { get; init; } = new List<Track>();
 }

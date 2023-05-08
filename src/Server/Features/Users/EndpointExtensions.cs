@@ -12,8 +12,8 @@ internal static class EndpointExtensions
             .WithTags(nameof(Users));
         {
             user
-                .MapGet("{username}", UserEndpoint.GetCurrentUser)
-                .Produces<AccountResponse>(StatusCodes.Status200OK);
+                .MapGet("me", UserEndpoint.GetCurrentUser)
+                .Produces<UserResponse>(StatusCodes.Status200OK);
         }
 
         return app;

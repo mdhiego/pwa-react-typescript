@@ -7,7 +7,7 @@ public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
 {
     public RegisterRequestValidator()
     {
-        RuleFor(static r => r.Name)
+        RuleFor(static r => r.FirstName)
             .NotNull();
 
         RuleFor(static r => r.Email)

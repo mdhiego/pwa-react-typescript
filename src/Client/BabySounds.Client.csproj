@@ -26,4 +26,20 @@
     <ProjectReference Include="..\Contracts\BabySounds.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\sounds\white_noise\dryer.wav" />
+    <None Include="wwwroot\sounds\white_noise\fireplace.wav" />
+    <None Include="wwwroot\sounds\white_noise\heart.wav" />
+    <None Include="wwwroot\sounds\white_noise\lake.wav" />
+    <None Include="wwwroot\sounds\white_noise\rain.wav" />
+    <None Include="wwwroot\sounds\white_noise\sea.wav" />
+    <None Include="wwwroot\sounds\white_noise\urterus.mp3" />
+    <None Include="wwwroot\sounds\white_noise\waterfall.wav" />
+    <None Include="wwwroot\sounds\white_noise\wind.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\" />
+  </ItemGroup>
+
 </Project>

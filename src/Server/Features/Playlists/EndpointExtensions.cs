@@ -13,7 +13,7 @@ internal static class EndpointExtensions
         {
             user
                 .MapGet("{playlistId}", PlaylistEndpoint.GetPlaylist)
-                .Produces<AccountResponse>(StatusCodes.Status200OK);
+                .Produces<UserResponse>(StatusCodes.Status200OK);
         }
 
         return app;

@@ -4,7 +4,8 @@ namespace BabySounds.Server.Domain;
 
 public sealed class User : IdentityUser
 {
-    public string Password { get; init; }
+    public required string FirstName { get; set; }
+    public string Password { get; set; }
 
-    public ICollection<Playlist> Playlists { get; init; }
+    public ICollection<Playlist> Playlists { get; init; } = new List<Playlist>();
 }

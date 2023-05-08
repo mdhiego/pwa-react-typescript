@@ -24,6 +24,7 @@ internal static class RegisterEndpoint
     {
         dbContext.Users.Add(new User
         {
+            FirstName = request.FirstName,
             UserName = request.Username,
             NormalizedUserName = request.Username.Trim().ToLowerInvariant(),
             Email = request.Email,

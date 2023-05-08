@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{23F04F7B-E35
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8BAEA508-FC10-4589-A341-64A654BD61E8}"
 	ProjectSection(SolutionItems) = preProject
-		docs\arch.dio = docs\arch.dio
 		docs\spec.yml = docs\spec.yml
 		docs\request.http = docs\request.http
 		docs\User Persona and Journey.pdf = docs\User Persona and Journey.pdf
@@ -16,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8BAEA508-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DC6D1329-880C-492D-A1C2-7082CBFA62F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiki", "wiki", "{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "help", "help", "{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863}"
 	ProjectSection(SolutionItems) = preProject
 		docs\wiki\dotnet-tools.md = docs\wiki\dotnet-tools.md
 		docs\wiki\repr-pattern.md = docs\wiki\repr-pattern.md
@@ -24,8 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiki", "wiki", "{E5F2653F-9
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabySounds.Client.MediaApi", "src\Client.MediaApi\BabySounds.Client.MediaApi.csproj", "{9ACADFC4-6C21-4A41-9671-0092CD96E6C6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabySounds.Client.Browser", "src\Client.Browser\BabySounds.Client.Browser.csproj", "{0A3DFE70-A6FB-4925-B3E1-4753E469A223}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabySounds.Client", "src\Client\BabySounds.Client.csproj", "{B5863F29-AADE-48F8-8FB9-77BBD7DFA74E}"
 EndProject
@@ -46,10 +43,6 @@ Global
 		{9ACADFC4-6C21-4A41-9671-0092CD96E6C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ACADFC4-6C21-4A41-9671-0092CD96E6C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ACADFC4-6C21-4A41-9671-0092CD96E6C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A3DFE70-A6FB-4925-B3E1-4753E469A223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A3DFE70-A6FB-4925-B3E1-4753E469A223}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A3DFE70-A6FB-4925-B3E1-4753E469A223}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A3DFE70-A6FB-4925-B3E1-4753E469A223}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5863F29-AADE-48F8-8FB9-77BBD7DFA74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5863F29-AADE-48F8-8FB9-77BBD7DFA74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5863F29-AADE-48F8-8FB9-77BBD7DFA74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +59,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863} = {8BAEA508-FC10-4589-A341-64A654BD61E8}
 		{9ACADFC4-6C21-4A41-9671-0092CD96E6C6} = {23F04F7B-E357-41A0-9254-F11E52A105C4}
-		{0A3DFE70-A6FB-4925-B3E1-4753E469A223} = {23F04F7B-E357-41A0-9254-F11E52A105C4}
 		{B5863F29-AADE-48F8-8FB9-77BBD7DFA74E} = {23F04F7B-E357-41A0-9254-F11E52A105C4}
 		{2AFCC3FB-E5C9-45A5-89E6-9A920BBEFCCB} = {23F04F7B-E357-41A0-9254-F11E52A105C4}
 		{9033B94E-2009-425F-9C6A-1582432CB207} = {23F04F7B-E357-41A0-9254-F11E52A105C4}
