@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/services/src/ADS.BabySleep/bin/Debug/net7.0/ADS.BabySleep.dll",
+            "program": "${workspaceFolder}/src/ADS.BabySleep/bin/Debug/net7.0/ADS.BabySleep.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/services/src/ADS.BabySleep",
+            "cwd": "${workspaceFolder}/src/ADS.BabySleep",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

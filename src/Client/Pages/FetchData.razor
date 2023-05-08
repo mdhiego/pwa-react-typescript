@@ -1,0 +1,58 @@
+﻿@page "/fetchdata"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using BabySounds.Contracts.Responses
+@attribute [Authorize]
+@inject HttpClient Http
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (_tracks == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Order</th>
+            <th>Name</th>
+            <th>Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var track in _tracks)
+        {
+            <tr>
+                <td>@track.Order.ToString()</td>
+                <td>@track.Name</td>
+                <td>@track.Duration</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private TrackResponse[]? _tracks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _tracks = await Http.GetFromJsonAsync<TrackResponse[]>("tracks");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+
+}

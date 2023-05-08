@@ -1,5 +1,0 @@
-### Basic authorization.
-GET https://localhost:7188/auth/token
-Authorization: Basic user passwd
-
-###
