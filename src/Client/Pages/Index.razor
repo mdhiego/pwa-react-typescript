@@ -1,7 +1,11 @@
 ﻿@page "/"
+@using BabySounds.Client.Services
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using NeoSmart.PrettySize
+@* @attribute [Authorize] *@
 @inject MediaFiles MediaFiles
+@inject JsonPlaceHolder JsonPlaceHolder;
 
 <menu>
     <span>Folder:</span>
@@ -83,5 +87,4 @@
             // User cancelled
         }
     }
-
 }

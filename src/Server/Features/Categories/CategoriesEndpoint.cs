@@ -2,18 +2,18 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BabySounds.Server.Features.Tracks;
+namespace BabySounds.Server.Features.Categories;
 
-internal static class TracksEndpoint
+internal static class CategoriesEndpoint
 {
-    public static async ValueTask<IResult> GetTracks(
+    public static async ValueTask<IResult> GetCategories(
         [FromServices] ApplicationDbContext dbContext,
         CancellationToken cancellationToken
     )
     {
-        var tracks = await dbContext.Tracks
+        var categories = await dbContext.Categories
             .ToListAsync(cancellationToken: cancellationToken);
 
-        return Results.Ok(tracks);
+        return Results.Ok(categories);
     }
 }

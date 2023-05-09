@@ -6,16 +6,16 @@ internal static class EndpointExtensions
 {
     public static IEndpointRouteBuilder MapTracksEndpoints(this IEndpointRouteBuilder app)
     {
-        var songs = app
+        var songsGroup = app
             .MapGroup("/tracks")
             .RequireAuthorization()
             .WithTags(nameof(Tracks));
         {
-            songs
+            songsGroup
                 .MapGet("", TracksEndpoint.GetTracks)
-                .Produces<TracksResponse>(StatusCodes.Status200OK);
+                .Produces<IEnumerable<TracksResponse>>(StatusCodes.Status200OK);
 
-            songs
+            songsGroup
                 .MapGet("{trackId}", TrackEndpoint.GetTrack)
                 .Produces<TracksResponse>(StatusCodes.Status200OK);
         }

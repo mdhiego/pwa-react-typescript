@@ -2,18 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BabySounds.Server.Features.Tracks;
+namespace BabySounds.Server.Features.Search;
 
-internal static class TracksEndpoint
+internal static class SearchEndpoint
 {
-    public static async ValueTask<IResult> GetTracks(
+    public static async ValueTask<IResult> Search(
+        [FromQuery] string query,
         [FromServices] ApplicationDbContext dbContext,
         CancellationToken cancellationToken
     )
     {
-        var tracks = await dbContext.Tracks
+        var searchResult = await dbContext.Tracks
             .ToListAsync(cancellationToken: cancellationToken);
 
-        return Results.Ok(tracks);
+        return Results.Ok(searchResult);
     }
 }

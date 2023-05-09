@@ -1,0 +1,45 @@
+﻿@page "/tracks"
+@using BabySounds.Client.Services
+@using BabySounds.Contracts.Responses
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@inject JsonPlaceHolder JsonPlaceHolder;
+
+<h1>Tracks</h1>
+
+@if (_tracks != null)
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var track in _tracks)
+        {
+            <tr>
+                <td>@track.Order</td>
+                <td>@track.Name</td>
+                <td>@track.Duration</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1>Não Autorizado !!!</h1>
+}
+
+@code{
+    private List<TrackResponse>? _tracks = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _tracks = await JsonPlaceHolder.GetTracks();
+    }
+
+}

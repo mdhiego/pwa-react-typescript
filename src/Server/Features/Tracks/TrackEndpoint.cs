@@ -1,17 +1,19 @@
-﻿using BabySounds.Contracts.Responses;
+﻿
+using BabySounds.Server.Brokers.Persistence;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BabySounds.Server.Features.Tracks;
 
 internal static class TrackEndpoint
 {
-    public static ValueTask<IResult> GetTrack([FromRoute] string trackId, CancellationToken cancellationToken)
+    public static async ValueTask<IResult> GetTrack(
+        [FromRoute] string trackId,
+        [FromServices] ApplicationDbContext dbContext,
+        CancellationToken cancellationToken
+    )
     {
-        var tracksResponse = new TrackResponse
-        {
-            UpdateTime = DateTime.UtcNow
-        };
+        var track = await dbContext.Tracks.FindAsync(trackId);
 
-        return ValueTask.FromResult(Results.Ok(tracksResponse));
+        return Results.Ok(track);
     }
 }

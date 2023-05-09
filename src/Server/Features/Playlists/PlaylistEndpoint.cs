@@ -1,17 +1,21 @@
-﻿using BabySounds.Contracts.Responses;
+﻿using BabySounds.Server.Brokers.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BabySounds.Server.Features.Playlists;
 
 internal static class PlaylistEndpoint
 {
-    public static ValueTask<IResult> GetPlaylist([FromRoute] string playlistId, CancellationToken cancellationToken)
+    public static async ValueTask<IResult> GetPlaylist(
+        [FromRoute] Guid playlistId,
+        [FromServices] ApplicationDbContext dbContext,
+        CancellationToken cancellationToken
+    )
     {
-        var playlistsResponse = new PlaylistResponse
-        {
-            UpdateTime = DateTime.UtcNow
-        };
+        var playlist = await dbContext.Playlists
+            .AsNoTracking()
+            .FirstOrDefaultAsync(playlist => playlist.Id == playlistId, cancellationToken);
 
-        return ValueTask.FromResult(Results.Ok(playlistsResponse));
+        return Results.Ok(playlist);
     }
 }

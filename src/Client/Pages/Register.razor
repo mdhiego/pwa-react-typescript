@@ -1,0 +1,85 @@
+﻿@page "/register"
+@using BabySounds.Client.Services
+@using BabySounds.Contracts.Requests
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+
+<h1>Register</h1>
+
+@if (_showErrors)
+{
+    <div class="alert alert-danger" role="alert">
+        @foreach (var error in _errors)
+        {
+            <p>@error</p>
+        }
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Please enter your details</h5>
+        <EditForm Model="_registerRequest" OnValidSubmit="HandleRegistration">
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <InputText Id="firstName" class="form-control" @bind-Value="_registerRequest.FirstName"/>
+                <ValidationMessage For="@(() => _registerRequest.FirstName)"/>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <InputText Id="username" class="form-control" @bind-Value="_registerRequest.Username"/>
+                <ValidationMessage For="@(() => _registerRequest.Username)"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <InputText Id="email" class="form-control" @bind-Value="_registerRequest.Email"/>
+                <ValidationMessage For="@(() => _registerRequest.Email)"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText Id="password" type="password" class="form-control" @bind-Value="_registerRequest.Password"/>
+                <ValidationMessage For="@(() => _registerRequest.Password)"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <InputText Id="password" type="password" class="form-control" @bind-Value="_registerRequest.ConfirmPassword"/>
+                <ValidationMessage For="@(() => _registerRequest.ConfirmPassword)"/>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+
+    private readonly RegisterRequest _registerRequest = new()
+    {
+        FirstName = "",
+        Username = "",
+        Email = "",
+        Password = "",
+        ConfirmPassword = ""
+    };
+    private bool _showErrors;
+    private IEnumerable<string> _errors = new List<string>();
+
+    private async Task HandleRegistration()
+    {
+        _showErrors = false;
+
+        var response = await AuthService.Register(_registerRequest);
+
+        response.Switch(
+            _ => NavigationManager.NavigateTo("/"),
+            failure =>
+            {
+                _errors = failure.Select(x => x.Description);
+                _showErrors = true;
+            });
+    }
+
+}

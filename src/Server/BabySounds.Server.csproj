@@ -25,11 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Client\BabySounds.Client.csproj" />
     <ProjectReference Include="..\Contracts\BabySounds.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\index.html" />
   </ItemGroup>
 
 </Project>

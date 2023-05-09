@@ -25,6 +25,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<User> Users => Set<User>();
     public DbSet<Track> Tracks => Set<Track>();
+    public DbSet<Category> Categories => Set<Category>();
     public DbSet<Playlist> Playlists => Set<Playlist>();
 
     protected override void OnModelCreating(ModelBuilder builder)

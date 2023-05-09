@@ -6,12 +6,12 @@ internal static class EndpointExtensions
 {
     public static IEndpointRouteBuilder MapUsersEndpoints(this IEndpointRouteBuilder app)
     {
-        var user = app
+        var userGroup = app
             .MapGroup("/users")
             .RequireAuthorization()
             .WithTags(nameof(Users));
         {
-            user
+            userGroup
                 .MapGet("me", UserEndpoint.GetCurrentUser)
                 .Produces<UserResponse>(StatusCodes.Status200OK);
         }

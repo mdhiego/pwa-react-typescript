@@ -6,6 +6,7 @@ internal static class LogoutEndpoint
         CancellationToken cancellationToken
     )
     {
+
         return new ValueTask<IResult>(Results.Ok());
     }
 }

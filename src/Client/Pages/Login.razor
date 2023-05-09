@@ -1,0 +1,63 @@
+﻿@page "/login"
+@using BabySounds.Client.Services
+@using BabySounds.Contracts.Requests
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+
+<h1>Login</h1>
+
+@if (_showError)
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@_error</p>
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Please enter your details</h5>
+        <EditForm Model="_loginModel" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <InputText Id="email" Class="form-control" @bind-Value="_loginModel.UserName"/>
+                <ValidationMessage For="@(() => _loginModel.UserName)"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText Id="password" type="password" Class="form-control" @bind-Value="_loginModel.Password"/>
+                <ValidationMessage For="@(() => _loginModel.Password)"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+
+    private readonly LoginRequest _loginModel = new()
+    {
+        UserName = "",
+        Password = ""
+    };
+    private bool _showError;
+    private string? _error = "";
+
+    private async Task HandleLogin()
+    {
+        _showError = false;
+
+        var response = await AuthService.Login(_loginModel);
+
+        response.Switch(
+            _ => NavigationManager.NavigateTo("/"),
+            failure =>
+            {
+                _error = failure.FirstOrDefault().Description;
+                _showError = true;
+            });
+    }
+
+}

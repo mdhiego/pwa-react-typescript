@@ -1,19 +1,21 @@
-﻿using BabySounds.Contracts.Responses;
-
-namespace BabySounds.Server.Features.Playlists;
+﻿namespace BabySounds.Server.Features.Playlists;
 
 internal static class EndpointExtensions
 {
     public static IEndpointRouteBuilder MapPlaylistsEndpoints(this IEndpointRouteBuilder app)
     {
-        var user = app
+        var playlistGroup = app
             .MapGroup("/playlists")
             .RequireAuthorization()
             .WithTags(nameof(Playlists));
         {
-            user
+            playlistGroup
+                .MapGet("", PlaylistsEndpoint.GetPlaylists)
+                .Produces(StatusCodes.Status200OK);
+
+            playlistGroup
                 .MapGet("{playlistId}", PlaylistEndpoint.GetPlaylist)
-                .Produces<UserResponse>(StatusCodes.Status200OK);
+                .Produces(StatusCodes.Status200OK);
         }
 
         return app;

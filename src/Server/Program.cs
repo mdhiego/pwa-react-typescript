@@ -36,7 +36,6 @@ var app = builder.Build();
     if (!app.Environment.IsProduction())
     {
         app
-            .UseDefaultFiles()
             .UseSwagger()
             .UseSwaggerUI(static options =>
             {
@@ -46,8 +45,11 @@ var app = builder.Build();
     }
 
     app
-        .UseStaticFiles()
-        .UseBlazorFrameworkFiles();
+        .UseBlazorFrameworkFiles()
+        .UseStaticFiles();
+
+    app.MapFallbackToFile("index.html");
+    app.MapHealthChecks("/health");
 
     app
         .UseHttpsRedirection()
@@ -61,11 +63,10 @@ var app = builder.Build();
         .MapAuthEndpoints()
         .MapUsersEndpoints()
         .MapTracksEndpoints()
-        .MapSearchEndpoints()
         .MapCategoriesEndpoints()
         .MapPlaylistsEndpoints()
-        .MapPlayerEndpoints()
-        .MapHealthChecks("/health");
+        .MapSearchEndpoints()
+        .MapPlayerEndpoints();
 }
 
 app.Run();
