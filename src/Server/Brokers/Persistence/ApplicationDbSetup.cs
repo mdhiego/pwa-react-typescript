@@ -74,8 +74,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Dryer",
                 Description = "Dryer spinning",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/dryer.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/dryer.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -85,8 +85,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Fireplace",
                 Description = "Fireplace burning",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/fireplace.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/fireplace.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -96,8 +96,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Heart Beat",
                 Description = "Heart beating",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/heart-beat.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/heart-beat.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -107,8 +107,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Lake",
                 Description = "Lake water",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/lake.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/lake.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -118,8 +118,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Rain",
                 Description = "Rain falling",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/rain.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/rain.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -129,8 +129,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Sea",
                 Description = "Sea waves",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/sea.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/sea.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -140,8 +140,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Uterus",
                 Description = "Uterus sounds",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/uterus.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/uterus.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -151,8 +151,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Waterfall",
                 Description = "Waterfall sounds",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/waterfall.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/waterfall.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
@@ -162,8 +162,8 @@ public sealed class ApplicationDbSetup : IHostedService
                 Title = "Wind",
                 Description = "Wind blowing",
                 Category = whiteNoiseCategory,
-                AudioPath = "/tracks/white-noise/wind.mp3",
-                ImagePath = "/images/white-noise/default.jpg",
+                AudioPath = "tracks/white-noise/wind.mp3",
+                ImagePath = "images/white-noise/default.jpg",
                 CreatedAt = DateTime.Now,
             };
 
