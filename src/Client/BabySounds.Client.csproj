@@ -33,4 +33,20 @@
     <_ContentIncludedByDefault Remove="wwwroot\bootstrap\bootstrap.min.css.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\images\white-noise\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\tracks\white-noise\dryer.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\fireplace.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\heart.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\lake.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\rain.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\sea.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\urterus.mp3" />
+    <None Include="wwwroot\assets\tracks\white-noise\waterfall.wav" />
+    <None Include="wwwroot\assets\tracks\white-noise\wind.mp3" />
+  </ItemGroup>
+
 </Project>

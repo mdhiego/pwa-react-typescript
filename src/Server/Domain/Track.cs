@@ -6,8 +6,10 @@ public sealed record Track
 
     public string Title { get; set; }
     public string? Description { get; set; }
-    public string? ImageUrl { get; set; }
-    public string? AudioUrl { get; set; }
+    public string? ImagePath { get; set; }
+    public string? AudioPath { get; set; }
     public Category Category { get; set; }
+
+    public DateTime CreatedAt { get; set; }
     public DateTime UpdateTime { get; init; }
 }

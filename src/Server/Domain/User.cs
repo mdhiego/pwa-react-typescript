@@ -4,6 +4,12 @@ namespace BabySounds.Server.Domain;
 
 public sealed class User : IdentityUser
 {
+    internal User()
+    {
+        NormalizedUserName = UserName?.ToLowerInvariant();
+        NormalizedEmail = Email?.ToLowerInvariant();
+    }
+
     public required string FirstName { get; set; }
     public string Password { get; set; }
 

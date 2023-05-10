@@ -13,11 +13,11 @@ internal static class EndpointExtensions
         {
             songsGroup
                 .MapGet("", TracksEndpoint.GetTracks)
-                .Produces<IEnumerable<TracksResponse>>(StatusCodes.Status200OK);
+                .Produces<IEnumerable<TrackResponse>>(StatusCodes.Status200OK);
 
             songsGroup
                 .MapGet("{trackId}", TrackEndpoint.GetTrack)
-                .Produces<TracksResponse>(StatusCodes.Status200OK);
+                .Produces<TrackResponse>(StatusCodes.Status200OK);
         }
 
         return app;
