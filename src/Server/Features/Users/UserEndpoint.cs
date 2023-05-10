@@ -23,8 +23,8 @@ internal static class UserEndpoint
         var accountsResponse = new UserResponse
         {
             FirstName = user.FirstName,
-            Email = user.Email,
-            Username = user.UserName,
+            Email = user.Email!,
+            Username = user.UserName!,
             UpdateTime = DateTime.UtcNow
         };
 

@@ -7,6 +7,7 @@ namespace BabySounds.Server.Brokers.Persistence;
 public sealed class ApplicationDbSetup : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;
+    private static Playlist? _defaultUserPlaylist;
 
     public ApplicationDbSetup(IServiceProvider serviceProvider)
     {
@@ -25,33 +26,11 @@ public sealed class ApplicationDbSetup : IHostedService
             await context.Database.MigrateAsync(cancellationToken);
         }
 
-        await SeedDefaultUser(context);
         await SeedSampleData(context);
+        await SeedDefaultUser(context);
     }
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
-
-
-    private static async Task SeedDefaultUser(ApplicationDbContext context)
-    {
-        if (!context.Users.Any())
-        {
-            var user = new User()
-            {
-                Id = Guid.NewGuid().ToString(),
-                FirstName = "TestUser",
-                UserName = "test_user",
-                Email = "test_user@email.com",
-                Password = "password_tests",
-                PasswordHash = "password_tests",
-                EmailConfirmed = true,
-            };
-
-            await context.Users.AddAsync(user);
-
-            await context.SaveChangesAsync();
-        }
-    }
 
     private static async Task SeedSampleData(ApplicationDbContext context)
     {
@@ -181,6 +160,42 @@ public sealed class ApplicationDbSetup : IHostedService
             };
 
             await context.AddRangeAsync(tracks);
+
+            _defaultUserPlaylist = new Playlist()
+            {
+                Id = new Guid(),
+                Name = "White Noise",
+                ImagePath = "images/white-noise/default.jpg",
+                CreatedAt = DateTime.Now,
+                Tracks = tracks,
+            };
+
+            await context.AddAsync(_defaultUserPlaylist);
+
+            await context.SaveChangesAsync();
+        }
+    }
+
+    private static async Task SeedDefaultUser(ApplicationDbContext context)
+    {
+        if (!context.Users.Any())
+        {
+            var user = new User()
+            {
+                Id = Guid.NewGuid().ToString(),
+                FirstName = "TestUser",
+                UserName = "test_user",
+                Email = "test_user@email.com",
+                Password = "password_tests",
+                PasswordHash = "password_tests",
+                EmailConfirmed = true,
+                Playlists = new List<Playlist>()
+                {
+                    _defaultUserPlaylist!,
+                },
+            };
+
+            await context.Users.AddAsync(user);
 
             await context.SaveChangesAsync();
         }

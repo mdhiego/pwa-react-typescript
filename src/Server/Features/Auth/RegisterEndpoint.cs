@@ -36,6 +36,7 @@ internal static class RegisterEndpoint
             {
                 new Playlist
                 {
+                    Id = new Guid(),
                     Name = "Favorites",
                     IsPublic = false,
                     Tracks = new List<Track>()

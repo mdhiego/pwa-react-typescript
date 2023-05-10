@@ -55,11 +55,11 @@ public sealed class ApiAuthenticationStateProvider : AuthenticationStateProvider
         var jsonBytes = ParseBase64WithoutPadding(payload);
         var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
 
-        keyValuePairs!.TryGetValue(ClaimTypes.Role, out object roles);
+        keyValuePairs!.TryGetValue(ClaimTypes.Role, out object? roles);
 
         if (roles != null)
         {
-            if (roles.ToString().Trim().StartsWith("[", StringComparison.Ordinal))
+            if (roles.ToString()!.Trim().StartsWith("[", StringComparison.Ordinal))
             {
                 var parsedRoles = JsonSerializer.Deserialize<string[]>(roles.ToString());
 

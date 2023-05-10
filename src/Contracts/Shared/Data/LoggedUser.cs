@@ -2,7 +2,7 @@ namespace BabySounds.Contracts.Shared.Data;
 
 public sealed record LoggedUser
 {
-    public string Identification { get; init; }
-    public string UserName { get; init; }
-    public DateTime LastAccess { get; init; }
+    public required string Identification { get; set; }
+    public required string UserName { get; set; }
+    public DateTime LastAccess { get; set; }
 }
