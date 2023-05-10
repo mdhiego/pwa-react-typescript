@@ -1,31 +1,32 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BabySounds</a>
+        <a class="navbar-brand" href="">Sono do Bebê</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
+<div class="{{NavMenuCssClass}} nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="flex-col bg-pink-700 text-white">
+        <div class="nav-item px-3 py-2">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span class="oi oi-home mr-2" aria-hidden="true"></span> Home
             </NavLink>
         </div>
-        <li class="nav-item px-3">
+        <li class="nav-item px-3 py-2">
             <NavLink class="nav-link" href="tracks">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Tracks
+                <span class="oi oi-list-rich mr-2" aria-hidden="true"></span> Tracks
             </NavLink>
         </li>
-        <div class="nav-item px-3">
+        <div class="nav-item px-3 py-2">
             <NavLink class="nav-link" href="playlists">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Playlists
+                <span class="oi oi-list-rich mr-2" aria-hidden="true"></span> Playlists
             </NavLink>
         </div>
     </nav>
 </div>
+
 
 @code {
     private bool _collapseNavMenu = true;

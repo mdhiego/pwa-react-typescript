@@ -8,32 +8,35 @@
 
 @if (_showError)
 {
-    <div class="alert alert-danger" role="alert">
+    <div class="bg-red-500 text-white px-4 py-2 rounded-md" role="alert">
         <p>@_error</p>
     </div>
 }
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Please enter your details</h5>
+<div class="flex justify-center items-center h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <h5 class="text-lg font-semibold mb-4">Please enter your details</h5>
         <EditForm Model="_loginModel" OnValidSubmit="HandleLogin">
             <DataAnnotationsValidator/>
             <ValidationSummary/>
 
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <InputText Id="email" Class="form-control" @bind-Value="_loginModel.UserName"/>
-                <ValidationMessage For="@(() => _loginModel.UserName)"/>
+            <div class="mt-8">
+                <InputText Id="username" class="form-input mt-1 block w-full" @bind-Value="_loginModel.UserName" placeholder="Username"/>
+                <ValidationMessage For="@(() => _loginModel.UserName)" class="text-red-500"/>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <InputText Id="password" type="password" Class="form-control" @bind-Value="_loginModel.Password"/>
-                <ValidationMessage For="@(() => _loginModel.Password)"/>
+            <div class="mb-4">
+                <label for="password" class="block mb-1">Password</label>
+                <InputText Id="password" type="password" Class="form-input" @bind-Value="_loginModel.Password"/>
+                <ValidationMessage For="@(() => _loginModel.Password)" class="text-red-500 mt-1"/>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                    style="background-color: #4D0039;">
+                Submit
+            </button>
         </EditForm>
     </div>
 </div>
+
 
 @code {
 
@@ -42,6 +45,7 @@
         UserName = "",
         Password = ""
     };
+
     private bool _showError;
     private string? _error = "";
 

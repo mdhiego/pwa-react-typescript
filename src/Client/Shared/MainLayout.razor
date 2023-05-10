@@ -4,13 +4,11 @@
     <div class="sidebar">
         <NavMenu/>
     </div>
-
     <main>
-        <div class="top-row px-4 auth">
+        <div class="flex justify-between items-center px-4 auth">
             <LoginDisplay/>
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank" class="text-blue-500 hover:text-blue-700">About</a>
         </div>
-
         <article class="content px-4">
             @Body
         </article>

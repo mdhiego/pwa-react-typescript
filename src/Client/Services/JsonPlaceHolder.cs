@@ -15,7 +15,7 @@ namespace BabySounds.Client.Services
             _navigationManager = navigationManager;
         }
 
-        internal async Task<List<TrackResponse>> GetTracks()
+        internal async Task<List<TrackResponse>?> GetTracks()
         {
             using var response = await _httpClient.GetAsync("/tracks");
 

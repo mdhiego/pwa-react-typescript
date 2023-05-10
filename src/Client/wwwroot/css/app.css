@@ -1,4 +1,4 @@
-@import url('tailwind.bundled.min.css');
+@import url('https://cdn.tailwindcss.com');
 
 html {
     height: 100%;
@@ -6,12 +6,7 @@ html {
 
 body {
     min-height: 100%;
-    font-family: Roboto;
-    overflow-y: scroll;
-}
-
-h1:focus {
-    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #blazor-error-ui {
@@ -41,6 +36,39 @@ h1:focus {
 
 .blazor-error-boundary::after {
     content: "An error has occurred."
+}
+
+.loading-progress {
+    position: relative;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;
+}
+
+.loading-progress circle {
+    fill: none;
+    stroke: #B30753;
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.loading-progress circle:last-child {
+    stroke: #4D0039;
+    stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+.loading-progress-text:after {
+    content: var(--blazor-load-percentage-text, "Loading");
 }
 
 .files-grid {
@@ -79,12 +107,26 @@ h1:focus {
     left: calc(100% - 4.3rem);
 }
 
-.files-grid th:nth-child(1) { width: 12rem; }
-.files-grid th:nth-child(2) { width: 4rem; }
-.files-grid th:nth-child(3) { width: 7rem; }
-.files-grid th:nth-child(4) { width: 20rem; }
+.files-grid th:nth-child(1) {
+    width: 12rem;
+}
 
-.files-grid tbody td { text-overflow: ellipsis; overflow: hidden; }
+.files-grid th:nth-child(2) {
+    width: 4rem;
+}
+
+.files-grid th:nth-child(3) {
+    width: 7rem;
+}
+
+.files-grid th:nth-child(4) {
+    width: 20rem;
+}
+
+.files-grid tbody td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
 .files-grid td:nth-child(4) {
     padding-top: 0 !important;
@@ -131,9 +173,9 @@ h1:focus {
     transform: rotateY(5deg);
     padding: 0.25rem;
     border-radius: 10rem;
-    background-color: rgba(209,213,219);
+    background-color: rgba(209, 213, 219);
     position: relative;
-    transition: transform 0.45s cubic-bezier(.62,1.95,.61,.63);
+    transition: transform 0.45s cubic-bezier(.62, 1.95, .61, .63);
 }
 
 .file-actions button:hover {
@@ -152,8 +194,8 @@ h1:focus {
 .file-actions button:active {
     transform: scale(0.9);
     transition-duration: 0.06s;
-    transition-timing-function: cubic-bezier(.06,.89,.57,1.04);
-    background-color: rgba(159,153,159);
+    transition-timing-function: cubic-bezier(.06, .89, .57, 1.04);
+    background-color: rgba(159, 153, 159);
     color: black;
 }
 
@@ -222,6 +264,6 @@ input[type=search]:focus {
     height: 1.25rem;
     position: absolute;
     left: .75rem;
-    top: calc(50% - 1.25rem/2);
+    top: calc(50% - 1.25rem / 2);
     background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='rgb(107 114 128)' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' b-nrli8fdfc6=''%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' b-nrli8fdfc6=''%3E%3C/path%3E%3C/svg%3E");
 }

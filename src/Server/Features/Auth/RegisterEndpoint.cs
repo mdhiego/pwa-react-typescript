@@ -25,8 +25,8 @@ internal static class RegisterEndpoint
         dbContext.Users.Add(new User
         {
             FirstName = request.FirstName,
-            UserName = request.Username,
-            NormalizedUserName = request.Username.Trim().ToLowerInvariant(),
+            UserName = request.UserName,
+            NormalizedUserName = request.UserName.Trim().ToLowerInvariant(),
             Email = request.Email,
             NormalizedEmail = request.Email.Trim().ToLowerInvariant(),
             EmailConfirmed = false,
@@ -49,14 +49,14 @@ internal static class RegisterEndpoint
         var jwtToken = jwtTokenGenerator.GenerateToken(
             new List<Claim>
             {
-                new(JwtRegisteredClaimNames.Sub, request.Username),
+                new(JwtRegisteredClaimNames.Sub, request.UserName),
                 new("data", JsonSerializer.Serialize(
                     new TokenData
                     {
                         LoggedUser = new LoggedUser
                         {
-                            Identification = request.Username,
-                            UserName = request.Username,
+                            Identification = request.UserName,
+                            UserName = request.UserName,
                             LastAccess = DateTime.UtcNow
                         }
                     },

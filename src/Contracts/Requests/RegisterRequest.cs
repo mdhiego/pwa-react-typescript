@@ -18,7 +18,7 @@ public sealed record RegisterRequest
     [Required]
     [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
     [DataType(DataType.Text)]
-    public required string Username { get; set; }
+    public required string UserName { get; set; }
 
     /// <summary>
     /// The email of the user.

@@ -19,23 +19,23 @@
 }
 else
 {
-    <table class="table">
+    <table class="border border-gray-300 divide-y divide-gray-300">
         <thead>
         <tr>
-            <th>Order</th>
-            <th>Name</th>
-            <th>Duration</th>
+            <th class="bg-pink-700 text-white py-2 px-4">Order</th>
+            <th class="bg-pink-700 text-white py-2 px-4">Name</th>
+            <th class="bg-pink-700 text-white py-2 px-4">Duration</th>
         </tr>
         </thead>
         <tbody>
         @foreach (var playlist in _playlist)
         {
             <tr>
-                <td>
-                    <img src="@($"./assets/{playlist.ImagePath}")" alt="@playlist.Name" width="100" />
+                <td class="py-2 px-4">
+                    <img src="@($"./assets/{playlist.ImagePath}")" alt="@playlist.Name" width="100"/>
                 </td>
-                <td>@playlist.</td>
-                <td>@playlist.UpdateTime</td>
+                <td class="py-2 px-4">@playlist.Name</td>
+                <td class="py-2 px-4">@playlist.UpdateTime</td>
             </tr>
         }
         </tbody>
