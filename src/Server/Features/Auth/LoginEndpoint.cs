@@ -35,7 +35,7 @@ internal static class LoginEndpoint
                         LoggedUser = new LoggedUser
                         {
                             Identification = request.UserName,
-                            UserName = user.UserName,
+                            UserName = request.UserName,
                             LastAccess = DateTime.UtcNow
                         }
                     }
