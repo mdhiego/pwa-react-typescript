@@ -40,7 +40,7 @@ public sealed class SwaggerConfigureOptions : IConfigureOptions<SwaggerGenOption
             Scheme = JwtBearerDefaults.AuthenticationScheme,
             BearerFormat = JwtConstants.TokenType,
             In = ParameterLocation.Header,
-            Description = "Type into the textbox: Bearer {your JWT token}."
+            Description = "Type into the textbox: {your JWT token}."
         };
         options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, securityScheme);
 
