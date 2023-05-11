@@ -1,19 +1,45 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
+﻿@using BabySounds.Client.Services
+@using BabySounds.Contracts.Responses
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject JsonPlaceHolder JsonPlaceHolder;
 @inject NavigationManager Navigation
 
-<div class="flex h-40 w-full items-center justify-center bg-pink-600 text-2xl font-semibold text-white">
-    <div class="w-4/5">Baby Sleep</div>
-</div>
-<div class="flex h-max w-full items-center justify-center text-xl text-white">
+<a href="">
+    <img src="./assets/images/logo.jpg" alt="Logo" class="h-auto w-max"/>
+</a>
+<div class="h-full w-4/5 bg-opacity-95 text-xl">
     <AuthorizeView>
         <Authorized>
-            <div class="w-4/5">Sidebar</div>
+            <div class="flex flex-col items-center justify-between">
+                <div>
+                    @foreach (var track in _tracks)
+                    {
+                        <div>
+                            <img src="" alt="@track.Title"/>
+                            <div>@track.Title</div>
+                        </div>
+                    }
+                </div>
+                <div class="flex items-center">
+                    <img src="./assets/images/player/add-button.png" alt="Speaker Image" class="h-6 w-6"/>
+                    <div class="px-2 text-lg">Add new music</div>
+                </div>
+            </div>
         </Authorized>
     </AuthorizeView>
 </div>
 
 @code{
+
+    private List<TrackResponse>? _tracks = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Navigation.Uri == Navigation.BaseUri)
+        {
+            _tracks = await JsonPlaceHolder.GetTracks();
+        }
+    }
 
     private void BeginLogOut()
     {

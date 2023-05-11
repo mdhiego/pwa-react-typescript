@@ -14,45 +14,45 @@
     </div>
 }
 
-<div class="w-4/5">
-    <div class="mb-10 text-lg font-semibold text-white">Please enter your details to register</div>
+<div class="w-4/5 max-w-md">
+    <div class="mb-10 text-lg font-semibold">Please enter your details to register</div>
 
     <EditForm Model="_registerModel" OnValidSubmit="HandleRegistration">
         <DataAnnotationsValidator/>
-        <ValidationSummary/>
+        @* <ValidationSummary/> *@
 
         <div class="mb-4 rounded-lg bg-white py-2">
             <input id="firstName" class="w-full px-4 py-2 text-gray-700 outline-none" placeholder="First Name" @bind="_registerModel.FirstName"/>
-            <ValidationMessage For="@(() => _registerModel.UserName)" class="mt-1 text-red-500"/>
+            <ValidationMessage For="@(() => _registerModel.UserName)" class="ms-4 text-red-500"/>
         </div>
 
         <div class="mb-4 rounded-lg bg-white py-2">
             <input id="email" class="w-full px-4 py-2 text-gray-700 outline-none" placeholder="Email" @bind="_registerModel.Email"/>
-            <ValidationMessage For="@(() => _registerModel.Email)" class="mt-1 text-red-500"/>
+            <ValidationMessage For="@(() => _registerModel.Email)" class="ms-4 text-red-500"/>
         </div>
 
         <div class="mb-4 rounded-lg bg-white py-2">
             <input id="username" class="w-full px-4 py-2 text-gray-700 outline-none" placeholder="Username" @bind="_registerModel.UserName"/>
-            <ValidationMessage For="@(() => _registerModel.UserName)" class="mt-1 text-red-500"/>
+            <ValidationMessage For="@(() => _registerModel.UserName)" class="ms-4 text-red-500"/>
         </div>
 
         <div class="flex flex-wrap justify-between">
           <div class="mx-1 mb-4 grow rounded-lg bg-white py-2">
             <input id="password" type="password" class="w-full px-4 py-2 text-gray-700 outline-none" placeholder="Password" @bind="_registerModel.Password" />
-            <ValidationMessage For="@(() => _registerModel.Password)" class="mt-1 text-red-500" />
+            <ValidationMessage For="@(() => _registerModel.Password)" class="ms-4 text-red-500" />
           </div>
           <div class="mx-1 mb-4 grow rounded-lg bg-white py-2">
             <input id="confirmPassword" type="password" class="w-full px-4 py-2 text-gray-700 outline-none" placeholder="Confirm Password" @bind="_registerModel.Password" />
-            <ValidationMessage For="@(() => _registerModel.ConfirmPassword)" class="mt-1 text-red-500" />
+            <ValidationMessage For="@(() => _registerModel.ConfirmPassword)" class="ms-4 text-red-500" />
           </div>
         </div>
 
         <div class="my-2">
             <input type="checkbox" class="form-checkbox w-4 text-purple-600"/>
-            <label for="agreements" class="ml-2 text-white">I agree to the terms and conditions</label>
+            <label for="agreements" class="ml-2">I agree to the terms and conditions</label>
         </div>
 
-        <button type="submit" class="mt-4 w-full rounded bg-pink-900 px-6 py-2 font-semibold text-white hover:bg-pink-950">Sing Up</button>
+        <button type="submit" class="mt-4 w-full rounded bg-pink-900 px-6 py-2 font-semibold hover:bg-pink-950">Sing Up</button>
     </EditForm>
 </div>
 
