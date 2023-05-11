@@ -4,39 +4,44 @@
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 
-<h1>Login</h1>
-
 @if (_showError)
 {
-    <div class="bg-red-500 text-white px-4 py-2 rounded-md" role="alert">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
         <p>@_error</p>
     </div>
 }
 
-<div class="flex justify-center items-center h-screen">
-    <div class="bg-white shadow-lg rounded-lg p-6">
-        <h5 class="text-lg font-semibold mb-4">Please enter your details</h5>
-        <EditForm Model="_loginModel" OnValidSubmit="HandleLogin">
-            <DataAnnotationsValidator/>
-            <ValidationSummary/>
+<div class="m-20">
+    <div class="mb-10 text-lg font-semibold text-white">Please enter your credentials to proceed</div>
 
-            <div class="mt-8">
-                <InputText Id="username" class="form-input mt-1 block w-full" @bind-Value="_loginModel.UserName" placeholder="Username"/>
+    <EditForm Model="_loginModel" OnValidSubmit="HandleLogin">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+
+        <div class="rounded-lg bg-white py-2">
+            <div class="w-full border-b-2">
+                <input id="username" class="w-full px-4 py-4 text-gray-700" placeholder="Username" @bind="_loginModel.UserName"/>
                 <ValidationMessage For="@(() => _loginModel.UserName)" class="text-red-500"/>
             </div>
-            <div class="mb-4">
-                <label for="password" class="block mb-1">Password</label>
-                <InputText Id="password" type="password" Class="form-input" @bind-Value="_loginModel.Password"/>
-                <ValidationMessage For="@(() => _loginModel.Password)" class="text-red-500 mt-1"/>
+            <div>
+                <input id="password" type="password" class="w-full px-4 py-4 text-gray-700" placeholder="Password" @bind="_loginModel.Password"/>
+                <ValidationMessage For="@(() => _loginModel.Password)" class="mt-1 text-red-500"/>
             </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                    style="background-color: #4D0039;">
-                Submit
-            </button>
-        </EditForm>
-    </div>
-</div>
+        </div>
 
+        <div class="mt-4 flex justify-between">
+            <div class="flex items-center">
+                <input type="checkbox" class="form-checkbox h-4 w-4 text-purple-600"/>
+                <label for="agreements" class="ml-2 text-white">Remember me</label>
+            </div>
+            <div class="items-center text-white">Forgot your password?</div>
+        </div>
+
+        <button type="submit" class="mt-4 w-full rounded bg-pink-900 px-6 py-4 font-semibold text-white hover:bg-pink-950">Sing In</button>
+    </EditForm>
+
+    <button class="mt-4 rounded bg-pink-900 px-6 py-4 font-semibold text-white hover:bg-pink-950">Don't have an account? <span class="text-blue-600" href="register">Create Account</span></button>
+</div>
 
 @code {
 

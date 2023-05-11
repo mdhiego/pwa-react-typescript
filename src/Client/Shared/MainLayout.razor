@@ -1,16 +1,13 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-    <main>
-        <div class="flex justify-between items-center px-4 auth">
-            <LoginDisplay/>
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank" class="text-blue-500 hover:text-blue-700">About</a>
-        </div>
-        <article class="content px-4">
-            @Body
-        </article>
+<div class="flex h-screen w-screen bg-pink-500">
+    <nav class="w-1/4 flex-col">
+        <LeftSide />
+    </nav>
+    <main class="flex w-2/4 items-center justify-center bg-pink-800">
+        @Body
     </main>
+    <nav class="w-1/4 flex-col">
+        <RigthSide />
+    </nav>
 </div>

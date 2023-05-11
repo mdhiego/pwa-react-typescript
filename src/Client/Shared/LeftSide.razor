@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject NavigationManager Navigation
+
+<div class="h-40 w-full bg-pink-600 text-2xl font-semibold text-white">
+    <a href="">Baby Sleep</a>
+</div>
+<div class="h-max w-full text-xl text-white">
+    
+</div>
+
+@code{
+
+    private void BeginLogOut()
+    {
+        Navigation.NavigateToLogout("LogOut");
+    }
+
+}
