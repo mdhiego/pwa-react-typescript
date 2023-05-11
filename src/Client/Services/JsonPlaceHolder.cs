@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net;
+using System.Net.Http.Json;
 using BabySounds.Contracts.Responses;
 using Microsoft.AspNetCore.Components;
 
@@ -19,9 +20,9 @@ namespace BabySounds.Client.Services
         {
             using var response = await _httpClient.GetAsync("/tracks");
 
-            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                _navigationManager.NavigateTo("notauthorized");
+                _navigationManager.NavigateTo("login");
             }
 
             var result = await _httpClient.GetFromJsonAsync<List<TrackResponse>>("/tracks");

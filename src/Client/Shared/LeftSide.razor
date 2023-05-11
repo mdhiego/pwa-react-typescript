@@ -1,8 +1,10 @@
 ﻿@using BabySounds.Client.Services
 @using BabySounds.Contracts.Responses
+@using Blazored.LocalStorage
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inject JsonPlaceHolder JsonPlaceHolder;
 @inject NavigationManager Navigation
+@inject ILocalStorageService LocalStorageService
 
 <a href="">
     <img src="./assets/images/logo.jpg" alt="Logo" class="h-auto w-max"/>
@@ -37,13 +39,13 @@
     {
         if (Navigation.Uri == Navigation.BaseUri)
         {
-            _tracks = await JsonPlaceHolder.GetTracks();
+            _tracks ??= await JsonPlaceHolder.GetTracks();
         }
     }
 
     private void BeginLogOut()
     {
-        Navigation.NavigateToLogout("LogOut");
+        Navigation.NavigateToLogout("logout");
     }
 
 }
