@@ -1,13 +1,13 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="flex h-screen w-screen bg-pink-500">
-    <nav class="w-1/4 flex-col">
-        <LeftSide />
+    <nav class="flex w-1/4 flex-col">
+        <LeftSide/>
     </nav>
-    <main class="flex w-2/4 items-center justify-center bg-pink-800">
+    <main class="flex w-2/4 flex-col items-center justify-center bg-pink-800">
         @Body
     </main>
-    <nav class="w-1/4 flex-col">
-        <RigthSide />
+    <nav class="flex w-1/4 flex-col">
+        <RigthSide/>
     </nav>
 </div>

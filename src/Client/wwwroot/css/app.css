@@ -1,4 +1,4 @@
-@import url('https://cdn.tailwindcss.com');
+@import url('tailwind.bundled.min.css');
 
 html {
     height: 100%;
