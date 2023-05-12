@@ -2,45 +2,82 @@
 @using BabySounds.Contracts.Responses
 @using Blazored.LocalStorage
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@inject JsonPlaceHolder JsonPlaceHolder;
+@inject BabySoundsWebClient BabySoundsWebClient;
 @inject NavigationManager Navigation
 @inject ILocalStorageService LocalStorageService
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using BabySounds.Contracts.Responses
+@attribute [Authorize]
+@inject HttpClient Http
 
 <a href="">
     <img src="./assets/images/logo.jpg" alt="Logo" class="h-auto w-max"/>
 </a>
-<div class="h-full w-4/5 bg-opacity-95 text-xl">
+<div class="flex h-full w-4/5 flex-col items-center justify-between bg-opacity-95 text-xl">
     <AuthorizeView>
         <Authorized>
-            <div class="flex flex-col items-center justify-between">
-                <div class="py-2 my-2">
-                    @foreach (var track in _tracks)
-                    {
-                        <div class="flex items-center my-2">
-                            <img src="./assets/images/player/play-button.jpg" alt="@track.Title" width="50"/>
-                            <div class="px-2">@track.Title</div>
-                        </div>
-                    }
+            @if (_playlists == null)
+            {
+                <p><em>Loading Playlists...</em></p>
+            }
+            else
+            {
+                <div class="flex h-full w-4/5 flex-col items-center justify-between bg-opacity-95 text-xl">
+                    <div class="py-2 my-2">
+                        @foreach (var playlist in _playlists)
+                        {
+                            <div class="flex items-center my-2">
+                                <img src="./assets/images/player/play-button.jpg" alt="@playlist.Name" width="50"/>
+                                <div class="px-2">@playlist.Name</div>
+                            </div>
+                        }
+                    </div>
+                    <a class="flex items-center py-6" href="add-music">
+                        <img src="https://localhost:7188/assets/images/player/add-button.png" alt="Speaker Image" class="h-6 w-6"/>
+                        <div class="px-2 text-xl">Add Playlist</div>
+                    </a>
                 </div>
-                <div class="flex items-center">
-                    <img src="./assets/images/player/add-button.png" alt="Speaker Image" class="h-6 w-6"/>
-                    <div class="px-2 text-lg">Add new music</div>
-                </div>
-            </div>
+            }
         </Authorized>
     </AuthorizeView>
 </div>
 
 @code{
 
-    private List<TrackResponse>? _tracks = new();
-
+    private PlaylistResponse[]? _playlists;
     protected override async Task OnInitializedAsync()
     {
-        if (Navigation.Uri == Navigation.BaseUri)
+        await base.OnInitializedAsync();
+
+        if (await LocalStorageService.ContainKeyAsync("access_token"))
         {
-            _tracks ??= await JsonPlaceHolder.GetTracks();
+            try
+            {
+                _playlists = await Http.GetFromJsonAsync<PlaylistResponse[]>("playlists");
+            }
+            catch (AccessTokenNotAvailableException exception)
+            {
+                exception.Redirect();
+            }
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (await LocalStorageService.ContainKeyAsync("access_token"))
+        {
+            try
+            {
+                _playlists = await Http.GetFromJsonAsync<PlaylistResponse[]>("playlists");
+            }
+            catch (AccessTokenNotAvailableException exception)
+            {
+                exception.Redirect();
+            }
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void BeginLogOut()

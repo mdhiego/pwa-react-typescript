@@ -5,51 +5,47 @@
 @attribute [Authorize]
 @inject HttpClient Http
 
-<PageTitle>Playlists</PageTitle>
-
-<h1>Playlists</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (_playlist == null)
-{
-    <p>
-        <em>Loading...</em>
-    </p>
-}
-else
-{
-    <table class="border border-gray-300 divide-y divide-gray-300">
-        <thead>
-        <tr>
-            <th class="bg-pink-700 text-white py-2 px-4">Order</th>
-            <th class="bg-pink-700 text-white py-2 px-4">Name</th>
-            <th class="bg-pink-700 text-white py-2 px-4">Duration</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var playlist in _playlist)
-        {
+<div class="flex h-full w-4/5 max-w-md flex-col">
+    @if (_playlists == null)
+    {
+        <p>
+            <em>Loading...</em>
+        </p>
+    }
+    else
+    {
+        <table class="border border-gray-300 divide-y divide-gray-300">
+            <thead>
             <tr>
-                <td class="py-2 px-4">
-                    <img src="@($"./assets/{playlist.ImagePath}")" alt="@playlist.Name" width="100"/>
-                </td>
-                <td class="py-2 px-4">@playlist.Name</td>
-                <td class="py-2 px-4">@playlist.UpdateTime</td>
+                <th class="bg-pink-700 text-white py-2 px-4">Order</th>
+                <th class="bg-pink-700 text-white py-2 px-4">Name</th>
+                <th class="bg-pink-700 text-white py-2 px-4">Duration</th>
             </tr>
-        }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+            @foreach (var playlist in _playlists)
+            {
+                <tr>
+                    <td class="py-2 px-4">
+                        <img src="@($"./assets/{playlist.ImagePath}")" alt="@playlist.Name" width="100"/>
+                    </td>
+                    <td class="py-2 px-4">@playlist.Name</td>
+                    <td class="py-2 px-4">@playlist.UpdateTime</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
 
 @code {
-    private PlaylistResponse[]? _playlist;
+    private PlaylistResponse[]? _playlists;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            _playlist = await Http.GetFromJsonAsync<PlaylistResponse[]>("playlists");
+            _playlists = await Http.GetFromJsonAsync<PlaylistResponse[]>("playlists");
         }
         catch (AccessTokenNotAvailableException exception)
         {

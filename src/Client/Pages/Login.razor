@@ -4,20 +4,20 @@
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 
-@if (_showError)
-{
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <p>@_error</p>
-    </div>
-}
+<div class="flex h-full w-4/5 max-w-md flex-col justify-center px-12">
+    @if (_showError)
+    {
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <p>@_error</p>
+        </div>
+    }
 
-<div class="flex w-4/5 max-w-md flex-col">
     <div class="mb-10 text-lg font-semibold">Please enter your credentials to proceed</div>
 
     <EditForm Model="_loginModel" OnValidSubmit="HandleLogin">
         <DataAnnotationsValidator/>
         <ValidationSummary/>
-        
+
         <div class="rounded-lg bg-white py-2">
             <div class="w-full border-b-2">
                 <input id="username" class="w-full px-4 py-2 text-gray-700 outline-none" placeholder="Username" @bind="_loginModel.UserName"/>

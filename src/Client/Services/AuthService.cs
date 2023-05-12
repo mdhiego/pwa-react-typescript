@@ -51,7 +51,7 @@ namespace BabySounds.Client.Services
 
             var responseAsJson = JsonSerializer.Deserialize<LoginResponse>(await response.Content.ReadAsStringAsync())!;
 
-            await _localStorage.SetItemAsync("authToken", responseAsJson.AccessToken);
+            await _localStorage.SetItemAsync("access_token", responseAsJson.AccessToken);
             ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(request.UserName);
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", responseAsJson.AccessToken);
 
@@ -60,7 +60,7 @@ namespace BabySounds.Client.Services
 
         public async Task Logout()
         {
-            await _localStorage.RemoveItemAsync("authToken");
+            await _localStorage.RemoveItemAsync("access_token");
             ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
             _httpClient.DefaultRequestHeaders.Authorization = null;
         }

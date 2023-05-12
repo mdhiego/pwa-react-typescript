@@ -3,46 +3,46 @@
 @using BabySounds.Contracts.Responses
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
-@inject JsonPlaceHolder JsonPlaceHolder;
+@inject BabySoundsWebClient BabySoundsWebClient;
 
-<h1>Tracks</h1>
-
-@if (_tracks != null)
-{
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Evento</th>
-            <th scope="col">Data</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var track in _tracks)
-        {
+<div class="flex h-full w-4/5 max-w-md flex-col">
+    @if (_tracks != null)
+    {
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <td>
-                    <img src="@($"./assets/{track.ImagePath}")" alt="@track.Title" width="100" />
-                </td>
-                <td>@track.Order</td>
-                <td>@track.Title</td>
-                <td>@track.Description</td>
+                <th scope="col">Id</th>
+                <th scope="col">Evento</th>
+                <th scope="col">Data</th>
             </tr>
-        }
-        </tbody>
-    </table>
-}
-else
-{
-    <h1>Não Autorizado !!!</h1>
-}
+            </thead>
+            <tbody>
+            @foreach (var track in _tracks)
+            {
+                <tr>
+                    <td>
+                        <img src="@($"./assets/{track.ImagePath}")" alt="@track.Title" width="100"/>
+                    </td>
+                    <td>@track.Order</td>
+                    <td>@track.Title</td>
+                    <td>@track.Description</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>Não Autorizado !!!</h1>
+    }
+</div>
 
 @code{
     private List<TrackResponse>? _tracks = new();
 
     protected override async Task OnInitializedAsync()
     {
-        _tracks = await JsonPlaceHolder.GetTracks();
+        _tracks = await BabySoundsWebClient.GetTracks();
     }
 
 }

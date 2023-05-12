@@ -19,7 +19,7 @@ public sealed class ApiAuthenticationStateProvider : AuthenticationStateProvider
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        var savedToken = await _localStorage.GetItemAsync<string>("authToken");
+        var savedToken = await _localStorage.GetItemAsync<string>("access_token");
 
         if (string.IsNullOrWhiteSpace(savedToken))
         {

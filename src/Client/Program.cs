@@ -19,6 +19,6 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<MediaFiles>();
 builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<JsonPlaceHolder>();
+builder.Services.AddScoped<BabySoundsWebClient>();
 
 await builder.Build().RunAsync();
