@@ -67,23 +67,6 @@
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (await LocalStorageService.ContainKeyAsync("access_token"))
-        {
-            try
-            {
-                _playlists = await Http.GetFromJsonAsync<PlaylistResponse[]>("playlists");
-            }
-            catch (AccessTokenNotAvailableException exception)
-            {
-                exception.Redirect();
-            }
-        }
-
-        await base.OnAfterRenderAsync(firstRender);
-    }
-
     private void BeginLogOut()
     {
         Navigation.NavigateToLogout("logout");
