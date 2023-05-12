@@ -25,11 +25,15 @@
             {
                 <div class="flex h-full w-4/5 flex-col items-center justify-between bg-opacity-95 text-xl">
                     <div class="py-2 my-2">
+                        <div class="px-2 text-xl mb-6">Playlists</div>
+                        
                         @foreach (var playlist in _playlists)
                         {
                             <div class="flex items-center my-2">
-                                <img src="./assets/images/player/play-button.jpg" alt="@playlist.Name" width="50"/>
-                                <div class="px-2">@playlist.Name</div>
+                                 <svg class="play-icon w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -1 26 26" fill="bg-pink-800">
+                                     <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd"/>
+                                 </svg>
+                                <div class="px-2 text-lg">@playlist.Name</div>
                             </div>
                         }
                     </div>
