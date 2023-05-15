@@ -6,7 +6,9 @@ public sealed record PlaylistResponse
     public string? ImagePath { get; set; }
     public bool IsPublic { get; set; } = true;
 
-    public DateTime UpdateTime { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; init; }
 
     public IEnumerable<TrackResponse> Tracks { get; init; } = new List<TrackResponse>();
 }

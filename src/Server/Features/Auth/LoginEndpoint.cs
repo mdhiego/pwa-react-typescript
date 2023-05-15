@@ -22,7 +22,7 @@ internal static class LoginEndpoint
     )
     {
         var user = await dbContext.Users
-            .FirstOrDefaultAsync(x => x.UserName == request.UserName, cancellationToken: cancellationToken);
+            .FirstOrDefaultAsync(x => x.UserName == request.UserName, cancellationToken);
         if (user is null || !user.Password.SequenceEqual(request.Password)) return Results.Unauthorized();
 
         var jwtToken = jwtTokenGenerator.GenerateToken(

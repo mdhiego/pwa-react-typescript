@@ -13,7 +13,7 @@ internal static class CategoryEndpoint
     )
     {
         var category = await dbContext.Categories
-            .SingleOrDefaultAsync(category => category.Id == categoryId, cancellationToken: cancellationToken);
+            .SingleOrDefaultAsync(category => category.Id == categoryId, cancellationToken);
 
         return Results.Ok(category);
     }

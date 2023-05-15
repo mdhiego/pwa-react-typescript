@@ -25,9 +25,9 @@ public sealed class JwtTokenGenerator : IJwtTokenGenerator
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
         var securityToken = new JwtSecurityToken(
-            issuer: _jwtBearerSettings.Issuer,
-            audience: _jwtBearerSettings.Audience,
-            claims: claims,
+            _jwtBearerSettings.Issuer,
+            _jwtBearerSettings.Audience,
+            claims,
             expires: _systemClock.UtcNow.AddSeconds(expiresInSeconds ?? _jwtBearerSettings.DefaultExpirationTimeInSeconds).DateTime,
             signingCredentials: credentials
         );

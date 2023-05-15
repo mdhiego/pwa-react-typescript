@@ -13,7 +13,7 @@ internal static class TracksEndpoint
     {
         var tracks = await dbContext.Tracks
             .Include(track => track.Category)
-            .ToListAsync(cancellationToken: cancellationToken);
+            .ToListAsync(cancellationToken);
 
         return Results.Ok(tracks);
     }

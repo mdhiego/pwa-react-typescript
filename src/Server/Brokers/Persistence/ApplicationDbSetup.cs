@@ -41,8 +41,7 @@ public sealed class ApplicationDbSetup : IHostedService
             {
                 Id = new Guid(),
                 Name = "White Noise",
-                Description =
-                    "White noise is a sound that contains every frequency within the range of human hearing (generally from 20 hertz to 20 kHz) in equal amounts. The term is used frequently in digital audio editing, where white noise is a common type of audio signal that is used to mask unwanted background noise.",
+                Description = "White noise is a sound that contains every frequency within the range of human hearing (generally from 20 hertz to 20 kHz) in equal amounts. The term is used frequently in digital audio editing, where white noise is a common type of audio signal that is used to mask unwanted background noise.",
             };
             await context.AddAsync(whiteNoiseCategory);
 

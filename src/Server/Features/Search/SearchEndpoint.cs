@@ -13,7 +13,7 @@ internal static class SearchEndpoint
     )
     {
         var searchResult = await dbContext.Tracks
-            .ToListAsync(cancellationToken: cancellationToken);
+            .ToListAsync(cancellationToken);
 
         return Results.Ok(searchResult);
     }

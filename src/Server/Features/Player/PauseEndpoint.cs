@@ -14,7 +14,7 @@ internal static class PauseEndpoint
     {
         var playlist = await dbContext.Playlists
             .Include(playlist => playlist.Tracks)
-            .SingleOrDefaultAsync(playlist => playlist.Id == playlistId, cancellationToken: cancellationToken);
+            .SingleOrDefaultAsync(playlist => playlist.Id == playlistId, cancellationToken);
 
         return Results.Ok(playlist);
     }

@@ -9,7 +9,7 @@ public sealed record Playlist
     public bool IsPublic { get; set; } = true;
 
     public DateTime CreatedAt { get; set; }
-    public DateTime? UpdateTime { get; init; } = null;
+    public DateTime? UpdatedAt { get; init; }
 
     public ICollection<Track> Tracks { get; init; } = new List<Track>();
 }

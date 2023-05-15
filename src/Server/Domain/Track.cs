@@ -13,5 +13,5 @@ public sealed record Track
     public Category? Category { get; set; }
 
     public DateTime CreatedAt { get; set; }
-    public DateTime? UpdateTime { get; init; } = null;
+    public DateTime? UpdatedAt { get; init; }
 }

@@ -12,7 +12,7 @@ internal static class PlaylistsEndpoint
     )
     {
         var playlists = await dbContext.Playlists
-            .ToListAsync(cancellationToken: cancellationToken);
+            .ToListAsync(cancellationToken);
 
         return Results.Ok(playlists);
     }

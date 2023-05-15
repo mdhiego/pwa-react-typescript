@@ -12,7 +12,7 @@ internal static class CategoriesEndpoint
     )
     {
         var categories = await dbContext.Categories
-            .ToListAsync(cancellationToken: cancellationToken);
+            .ToListAsync(cancellationToken);
 
         return Results.Ok(categories);
     }

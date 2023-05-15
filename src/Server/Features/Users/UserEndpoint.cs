@@ -16,7 +16,7 @@ internal static class UserEndpoint
     {
         var username = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await dbContext.Users
-            .FirstOrDefaultAsync(x => x.UserName == username, cancellationToken: cancellationToken);
+            .FirstOrDefaultAsync(x => x.UserName == username, cancellationToken);
 
         if (user is null) return Results.NotFound($"The user with the username {username} was not found.");
 
@@ -25,7 +25,7 @@ internal static class UserEndpoint
             FirstName = user.FirstName,
             Email = user.Email!,
             Username = user.UserName!,
-            UpdateTime = DateTime.UtcNow
+            CreatedAt = DateTime.UtcNow
         };
 
         return Results.Ok(accountsResponse);

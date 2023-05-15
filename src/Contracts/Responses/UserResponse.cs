@@ -6,5 +6,6 @@ public sealed record UserResponse
     public required string Email { get; set; }
     public required string Username { get; set; }
 
-    public DateTime UpdateTime { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; init; }
 }
