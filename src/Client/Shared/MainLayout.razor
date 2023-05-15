@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@inject NavigationManager Navigation
+@inherits LayoutComponentBase
 
 <div class="flex h-screen w-screen bg-opacity-90 text-white">
     <nav class="flex w-1/4 flex-col bg-pink-800">
@@ -11,3 +12,21 @@
         <RigthSide/>
     </nav>
 </div>
+
+@code {
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+
+        if (user.Identity?.IsAuthenticated == false)
+        {
+            Navigation.NavigateTo("login");
+        }
+    }
+
+}
