@@ -7,15 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{23F04F7B-E35
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8BAEA508-FC10-4589-A341-64A654BD61E8}"
 	ProjectSection(SolutionItems) = preProject
-		docs\spec.yml = docs\spec.yml
 		docs\request.http = docs\request.http
-		docs\User Persona and Journey.pdf = docs\User Persona and Journey.pdf
 		docs\http-client.env.json = docs\http-client.env.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DC6D1329-880C-492D-A1C2-7082CBFA62F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "help", "help", "{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiki", "wiki", "{E5F2653F-9A4D-448E-99DD-A7BEFBEFE863}"
 	ProjectSection(SolutionItems) = preProject
 		docs\wiki\dotnet-tools.md = docs\wiki\dotnet-tools.md
 		docs\wiki\repr-pattern.md = docs\wiki\repr-pattern.md
