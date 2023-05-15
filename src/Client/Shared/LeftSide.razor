@@ -1,11 +1,11 @@
 ﻿@using BabySounds.Client.Services
 @using BabySounds.Contracts.Responses
 @using Blazored.LocalStorage
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inject BabySoundsWebClient BabySoundsWebClient;
-@inject NavigationManager Navigation
+@inject NavigationManager NavigationManager
 @inject ILocalStorageService LocalStorageService
-@using Microsoft.AspNetCore.Authorization
 @inject HttpClient Http
 
 <a href="">
@@ -16,14 +16,16 @@
         <Authorized>
             @if (_playlists == null)
             {
-                <p><em>Loading Playlists...</em></p>
+                <p>
+                    <em>Loading Playlists...</em>
+                </p>
             }
             else
             {
                 <div class="flex h-full w-4/5 flex-col items-center justify-between bg-opacity-95 text-xl">
                     <div class="py-2 my-2">
                         <div class="px-2 text-xl mb-6">Available Playlists:</div>
-                        
+
                         @foreach (var playlist in _playlists)
                         {
                             <div class="flex items-center my-2">
@@ -47,6 +49,7 @@
 @code{
 
     private PlaylistResponse[]? _playlists;
+
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();

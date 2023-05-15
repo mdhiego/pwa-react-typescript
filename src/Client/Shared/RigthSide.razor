@@ -2,7 +2,8 @@
 @using BabySounds.Contracts.Responses
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inject BabySoundsWebClient BabySoundsWebClient;
-@inject NavigationManager Navigation
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
 
 <div class="pt-6 text-xl">
     <AuthorizeView>
@@ -33,9 +34,10 @@
 
 @code{
 
-    private void BeginLogOut()
+    private async Task BeginLogOut()
     {
-        Navigation.NavigateToLogout("logout");
+        await AuthService.Logout();
+        NavigationManager.NavigateTo("login");
     }
 
 }
