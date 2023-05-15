@@ -28,31 +28,4 @@
     <ProjectReference Include="..\Contracts\BabySounds.Contracts.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\assets\images\white-noise\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\assets\tracks\white-noise\dryer.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\fireplace.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\heart.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\lake.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\rain.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\sea.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\urterus.mp3" />
-    <None Include="wwwroot\assets\tracks\white-noise\waterfall.wav" />
-    <None Include="wwwroot\assets\tracks\white-noise\wind.mp3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\add-button.png" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\app.css" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\BabySounds.Client.styles.css" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\blazor.webassembly.js.download" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\logo.jpg" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\saved_resource" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\speaker.png" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\images\BabySounds_files\tailwind.bundled.min.css" />
-  </ItemGroup>
-
 </Project>
