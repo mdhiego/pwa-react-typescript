@@ -40,10 +40,14 @@ The Baby Sleep Application uses a relational database to store and manage data. 
 
 1. **User**: Represents a user of the application. It includes attributes such as `id`, `username`, `email`, and `password`.
 2. **Track**: Represents a white noise sound available in the application. It includes attributes such as `id`, `title`, `audioPath`, and `duration`.
-3. Playlist: Stores the user-created playlists in the Baby Sleep Application. A playlist is a collection of white noise sounds that users can create and customize according to their preferences. It includes attributes such as `id`, `name`, and `tracks`.
-4. **PlaybackHistory**: Stores the playback history of white noise sounds for a user. It includes attributes such as `id`, `user_id`, `tracks`.
+3. **Category**: Represents the categories or tags assigned to white noise sounds in the Baby Sleep Application. Categories provide a way to organize and classify sounds based on their characteristics or themes. This model includes attributes such as `id` and `name`.
+4. **Playlist**: Stores the user-created playlists in the Baby Sleep Application. A playlist is a collection of white noise sounds that users can create and customize according to their preferences. It includes attributes such as `id`, `name`, and `tracks`.
+5. **PlaybackHistory**: Stores the playback history of white noise sounds for a user. It includes attributes such as `id`, `user_id`, `tracks`.
 
 The use of a relational database allows for efficient data storage, retrieval, and querying. The application utilizes SQL queries and database transactions to ensure data consistency and integrity.
+
+The database setup and migration are handled by the backend. The backend uses Entity Framework Core to manage the database and perform CRUD operations.
+And the data seeding is handled by the backend as well when using `development` environment. The backend uses Entity Framework Core to seed the database with sample data.
 
 ---
 
